@@ -12,8 +12,9 @@ import Halogen.VDom.Driver (runUI)
 
 linkState :: Link.State
 linkState =
-  { href: ""
-  , text: "" }
+  { disabled: true
+  , href: "https://google.com"
+  , text: "Google" }
 
 main :: Effect Unit
 main = HA.runHalogenAff do
