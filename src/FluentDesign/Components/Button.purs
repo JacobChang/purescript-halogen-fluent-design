@@ -1,4 +1,4 @@
-module FluentDesign.Components.Link where
+module FluentDesign.Components.Button where
 
 import Prelude
 
@@ -9,13 +9,12 @@ import Halogen.HTML.Properties as HP
 
 type Slot = H.Slot (Const Unit) Void
 
-type State =
+type StandardState =
     { disabled :: Boolean
-    , href :: String
     , text :: String }
 
-link :: forall m. H.Component HH.HTML (Const Unit) State Void m
-link =
+standard :: forall m. H.Component HH.HTML (Const Unit) StandardState Void m
+standard =
   H.mkComponent
     { initialState: initialState
     , render: render
@@ -24,9 +23,9 @@ link =
     initialState state = state
 
     render state =
-      HH.a props [ HH.text state.text ]
+      HH.button props [ HH.text state.text ]
       where
         props =
           case state.disabled of
-            true -> [ HP.class_ $ HH.ClassName "link link--disabled" ]
-            false -> [ HP.class_ $ HH.ClassName "link",  HP.href state.href ]
+            true -> [ HP.title state.text,  HP.class_ $ HH.ClassName "button button--disabled" ]
+            false -> [HP.title state.text,  HP.class_ $ HH.ClassName "button"]
