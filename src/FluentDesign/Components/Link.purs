@@ -29,4 +29,4 @@ link =
         props =
           case state.disabled of
             true -> [ HP.class_ $ HH.ClassName "link link--disabled" ]
-            false -> [ HP.class_ $ HH.ClassName "link",  HP.href state.href ]
+            false -> [ HP.class_ $ HH.ClassName "link", HP.href state.href ]

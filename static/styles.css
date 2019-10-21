@@ -1,3 +1,8 @@
+:root {
+  --primary-color: #00a0ff;
+  --contrary-color: #ffa000;
+}
+
 *,
 *::before,
 *::after {
@@ -33,4 +38,35 @@ body {
 
 .button:hover {
   background-color: #f0f0f0;
+}
+
+.button.button--primary {
+  border: 1px solid var(--primary-color);
+
+  color: white;
+
+  background-color: var(--primary-color);
+}
+
+.dropdown {
+  padding: 1rem;
+}
+
+.choicegroup {
+  display: block;
+}
+
+.choicegroup__choice {
+  display: inline-block;
+  margin: 0 0.5rem;
+  padding: 0.25rem 1rem;
+  border: 1px solid currentColor;
+
+  color: var(--contrary-color);
+
+  border-radius: 0.25rem;
+}
+
+.choicegroup__choice.choicegroup__choice--selected {
+  color: var(--primary-color);
 }
