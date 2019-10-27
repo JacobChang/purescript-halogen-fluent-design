@@ -7,21 +7,29 @@ import Halogen as H
 import Halogen.HTML as HH
 import Halogen.HTML.Properties as HP
 
-type Slot = H.Slot (Const Unit) Void
+type Query = Const Unit
+
+type Slot = H.Slot Query Void
 
 type State =
     { disabled :: Boolean
     , text :: String }
 
-label :: forall m. H.Component HH.HTML (Const Unit) State Void m
+type Message = Void
+
+type Action = Void
+
+label :: forall m. H.Component HH.HTML Query State Message m
 label =
   H.mkComponent
     { initialState: initialState
     , render: render
     , eval: H.mkEval H.defaultEval }
   where
+    initialState :: State -> State
     initialState state = state
 
+    render :: State -> H.ComponentHTML Action () m
     render state =
       HH.a props [ HH.text state.text ]
       where
